@@ -1,0 +1,8 @@
+# Ignore artifacts:
+dist
+build
+coverage
+.html
+.yml
+
+*.tsbuildinfo

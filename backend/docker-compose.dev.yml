@@ -1,0 +1,28 @@
+services:
+  rnmarket-backend-server:
+    container_name: rnmarket-backend-server
+    image: rnmarket-backend-server
+    build:
+      context: .
+      dockerfile: dev.Dockerfile
+    volumes:
+      - ./src:/usr/src/app/src
+    environment:
+      - NODE_ENV=development
+      - PORT=3003
+      - DATABASE_URL=postgres://postgres:dbpassword@rnmarket-backend-postgres:5432/postgres
+      - JWTACCESSTOKENSECRET=accesssecret
+      - JWTREFRESHTOKENSECRET=refreshsecret
+      - JWTACCESSTOKENEXPIRATION=3600
+      - JWTREFRESHTOKENEXPIRATION=86400
+  rnmarket-backend-postgres:
+    container_name: rnmarket-backend-postgres
+    attach: false
+    image: postgres
+    ports:
+      - 5432:5432
+    volumes:
+      - ./postgresql/data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=dbpassword
+      - PGDATA=/var/lib/postgresql/data/pgdata

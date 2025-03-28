@@ -1,0 +1,22 @@
+{
+  "name": "RNmarket",
+  "version": "1.0.0",
+  "description": "An E-commerce single-page app built with Typescript, React, Node.js and PostgreSQL.",
+  "author": "Jimi Pitkäniitty",
+  "license": "UNLICENSED",
+  "type": "module",
+  "scripts": {
+    "lint": "cd backend && npm run lint && cd ../frontend && npm run lint",
+    "installDependencies": "cd backend && npm install && cd ../frontend && npm install",
+    "build": "cd frontend && npm run build && cd ../backend && npm run build",
+    "start": "NODE_ENV=production node index.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "@flydotio/dockerfile": "^0.7.8",
+    "dotenv": "^16.4.7",
+    "tsc-alias": "^1.8.11"
+  }
+}

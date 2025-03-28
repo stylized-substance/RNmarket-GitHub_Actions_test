@@ -1,0 +1,9 @@
+services:
+  rnmarket-frontend:
+    container_name: rnmarket-frontend
+    image: rnmarket-frontend
+    build:
+      context: .
+      dockerfile: dev.Dockerfile
+    volumes:
+      - ./src:/usr/src/app/src

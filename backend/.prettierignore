@@ -1,0 +1,9 @@
+# Ignore artifacts:
+build
+coverage
+
+data
+*.json
+postgresql/
+coverage
+ .env

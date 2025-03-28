@@ -1,0 +1,15 @@
+include:
+  - ./backend/docker-compose.dev.yml
+  - ./frontend/docker-compose.dev.yml
+services:
+  reverse-proxy:
+    container_name: rnmarket-reverse-proxy
+    image: nginx:1.20.1
+    volumes:
+      - ./nginx.dev.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - 8080:80
+    depends_on:
+      - rnmarket-backend-server
+      - rnmarket-frontend
+      - rnmarket-backend-postgres

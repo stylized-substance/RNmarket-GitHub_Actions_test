@@ -1,0 +1,5 @@
+node_modules
+postgresql
+build
+coverage
+.env
