@@ -38,6 +38,7 @@ beforeAll(async () => {
   // Assign access tokens to global variables
   userAccessToken = await getToken(user);
   adminAccessToken = await getToken(adminUser);
+  console.log('tokens', {userAccessToken, adminAccessToken})
 });
 
 afterAll(async () => {

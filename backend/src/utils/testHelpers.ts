@@ -88,6 +88,5 @@ export const getToken = async (user: {
   password: string;
 }): Promise<string> => {
   const loginResponse = await api.post('/api/authorization/login').send(user);
-  console.log('loginResponse', loginResponse)
   return loginResponse.body.payload.accessToken;
 };
