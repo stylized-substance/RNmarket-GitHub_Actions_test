@@ -7,6 +7,7 @@
   "type": "module",
   "scripts": {
     "lint": "cd backend && npm run lint && cd ../frontend && npm run lint",
+    "testBackend": "cd backend && npm run test-node",
     "installDependencies": "cd backend && npm install && cd ../frontend && npm install",
     "build": "cd frontend && npm run build && cd ../backend && npm run build",
     "start": "NODE_ENV=production node index.js"
