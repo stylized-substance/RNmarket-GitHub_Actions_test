@@ -59,7 +59,7 @@ const allVariablesDefined: boolean = Object.values(envVariables).every(
 const reassign = (): EnvVariables => {
   return {
     PORT: process.env.PORT ? parseNumber(Number(process.env.PORT)) : 3003,
-    DATABASE_URL: process.env.DATABASE_URL ? parseString(setDatabaseUrl()) : '',
+    DATABASE_URL: parseString(setDatabaseUrl()),
     JWTACCESSTOKENEXPIRATION: process.env.JWTACCESSTOKENEXPIRATION
       ? parseNumber(Number(process.env.JWTACCESSTOKENEXPIRATION))
       : 3600,
