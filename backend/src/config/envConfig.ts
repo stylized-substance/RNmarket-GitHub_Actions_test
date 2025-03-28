@@ -1,6 +1,6 @@
 import { parseString, parseNumber } from '#src/utils/typeNarrowers';
 import logger from '#src/utils/logger';
-import dotenv from 'dotenv'
+import dotenv from 'dotenv';
 
 interface EnvVariables {
   PORT: number;
@@ -58,16 +58,20 @@ const allVariablesDefined: boolean = Object.values(envVariables).every(
 
 const reassign = (): EnvVariables => {
   return {
-    PORT: parseNumber(Number(process.env.PORT)),
-    DATABASE_URL: parseString(setDatabaseUrl()),
-    JWTACCESSTOKENEXPIRATION: parseNumber(
-      Number(process.env.JWTACCESSTOKENEXPIRATION)
-    ),
-    JWTREFRESHTOKENEXPIRATION: parseNumber(
-      Number(process.env.JWTREFRESHTOKENEXPIRATION)
-    ),
-    JWTACCESSTOKENSECRET: parseString(process.env.JWTACCESSTOKENSECRET),
-    JWTREFRESHTOKENSECRET: parseString(process.env.JWTREFRESHTOKENSECRET)
+    PORT: process.env.PORT ? parseNumber(Number(process.env.PORT)) : 3003,
+    DATABASE_URL: process.env.DATABASE_URL ? parseString(setDatabaseUrl()) : '',
+    JWTACCESSTOKENEXPIRATION: process.env.JWTACCESSTOKENEXPIRATION
+      ? parseNumber(Number(process.env.JWTACCESSTOKENEXPIRATION))
+      : 3600,
+    JWTREFRESHTOKENEXPIRATION: process.env.JWTREFRESHTOKENEXPIRATION
+      ? parseNumber(Number(process.env.JWTREFRESHTOKENEXPIRATION))
+      : 86400,
+    JWTACCESSTOKENSECRET: process.env.JWTACCESSTOKENSECRET
+      ? parseString(process.env.JWTACCESSTOKENSECRET)
+      : 'accesssecret',
+    JWTREFRESHTOKENSECRET: process.env.JWTREFRESHTOKENSECRET
+      ? parseString(process.env.JWTREFRESHTOKENSECRET)
+      : 'refreshsecret'
   };
 };
 
@@ -77,16 +81,14 @@ if (!allVariablesDefined) {
     dotenv.config();
     envVariables = reassign();
   }
+}
 
-  for (const variable of Object.keys(envVariables) as Array<
-    keyof EnvVariables
-  >) {
-    if (!variableDefined(envVariables[variable])) {
-      logger(
-        `Environment variable ${variable} missing, exiting. Are you missing an .env file at project root or did you forget to set some variable?`
-      );
-      process.exit();
-    }
+for (const variable of Object.keys(envVariables) as Array<keyof EnvVariables>) {
+  if (!variableDefined(envVariables[variable])) {
+    logger(
+      `Environment variable ${variable} missing, exiting. Are you missing an .env file at project root or did you forget to set some variable?`
+    );
+    process.exit();
   }
 }
 
