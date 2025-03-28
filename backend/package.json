@@ -10,8 +10,8 @@
     "start": "ts-node ./src/app.ts",
     "startprod": "NODE_ENV=production node ./build/src/app.js",
     "dev": "NODE_ENV=development ts-node-dev -r tsconfig-paths/register --files ./src/app.ts",
-    "test-node": "NODE_ENV=test-node jest --watchAll --runInBand",
-    "test-docker": "NODE_ENV=test-docker jest --watchAll --runInBand",
+    "test-node": "NODE_ENV=test-node jest",
+    "test-docker": "NODE_ENV=test-docker jest",
     "lint": "eslint .",
     "prettier": "prettier . '!./postgresql' --write",
     "tsc": "tsc",
@@ -54,6 +54,7 @@
     "pg": "^8.12.0",
     "sequelize": "^6.37.3",
     "umzug": "^3.8.1",
-    "uuid": "^10.0.0"
+    "uuid": "^10.0.0",
+    "tsc-alias": "^1.8.11"
   }
 }
