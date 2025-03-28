@@ -14,7 +14,7 @@ if (!dbUrl?.startsWith('postgres')) {
 }
 
 const sequelize = new Sequelize(`${dbUrl}`, {
-  logging: (msg) => console.log(msg)
+  logging: (msg) => logger(msg)
 });
 
 const migrationConfig = {
