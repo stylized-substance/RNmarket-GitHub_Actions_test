@@ -34,6 +34,7 @@ beforeAll(async () => {
     username: 'admin@example.org',
     password: 'password'
   };
+  console.log('users', {userAccessToken, adminUser})
 
   // Assign access tokens to global variables
   userAccessToken = await getToken(user);
