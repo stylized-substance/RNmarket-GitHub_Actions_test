@@ -3,7 +3,7 @@ import logger from '#src/utils/logger';
 import dotenv from 'dotenv';
 
 interface EnvVariables {
-  PORT: number;
+  PORT: number | undefined;
   DATABASE_URL: string;
   JWTACCESSTOKENEXPIRATION: number;
   JWTREFRESHTOKENEXPIRATION: number;
@@ -83,10 +83,10 @@ if (!allVariablesDefined) {
   }
 }
 
-for (const variable of Object.keys(envVariables) as Array<keyof EnvVariables>) {
-  if (!variableDefined(envVariables[variable])) {
+for (const key of Object.keys(envVariables) as (keyof EnvVariables)[]) {
+  if (!variableDefined(envVariables[key])) {
     logger(
-      `Environment variable ${variable} missing, exiting. Are you missing an .env file at project root or did you forget to set some variable?`
+      `Environment variable ${key} missing, exiting. Are you missing an .env file at project root or did you forget to set some variable?`
     );
     process.exit();
   }
