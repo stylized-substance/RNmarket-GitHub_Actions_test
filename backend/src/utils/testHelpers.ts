@@ -89,7 +89,6 @@ export const getToken = async (user: {
 }): Promise<string | undefined> => {
   try {
     const loginResponse = await api.post('/api/authorization/login').send(user);
-    console.log('login response', loginResponse.body)
     return loginResponse.body.payload.accessToken;
   } catch (error) {
     console.log('Error while getting access token', error)
