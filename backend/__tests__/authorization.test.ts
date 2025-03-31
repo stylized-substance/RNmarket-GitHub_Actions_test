@@ -29,7 +29,7 @@ const user = {
   password: 'password'
 };
 
-beforeAll(async () => {
+beforeEach(async () => {
   // Empty database and run migrations
   await dropAllTables();
   await connectToDatabase();

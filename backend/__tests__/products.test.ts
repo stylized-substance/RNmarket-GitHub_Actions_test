@@ -20,7 +20,7 @@ const api = supertest(app);
 let userAccessToken: string;
 let adminAccessToken: string;
 
-beforeAll(async () => {
+beforeEach(async () => {
   // Empty database and run migrations
   await dropAllTables();
   await connectToDatabase();
@@ -128,7 +128,7 @@ describe('GET requests', () => {
       const response = await api.get('/api/products').query('category=asd');
       assert400Response(response);
       expect(response.body).toStrictEqual({
-        'Error': 'Invalid product category (asd)'
+        Error: 'Invalid product category (asd)'
       });
     });
 

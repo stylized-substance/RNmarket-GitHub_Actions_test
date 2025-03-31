@@ -23,7 +23,7 @@ const api = supertest(app);
 let userAccessToken: string;
 let adminAccessToken: string;
 
-beforeAll(async () => {
+beforeEach(async () => {
   // Empty database and run migrations
   await dropAllTables();
   await connectToDatabase();

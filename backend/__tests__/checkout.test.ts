@@ -8,14 +8,13 @@ import {
   dropAllTables
 } from '#src/utils/database';
 
-
 const api = supertest(app);
 
-beforeAll(async () => {
+beforeEach(async () => {
   // Empty database and run migrations
   await dropAllTables();
   await connectToDatabase();
-})
+});
 
 afterAll(async () => {
   await closeDatabaseConnection();
