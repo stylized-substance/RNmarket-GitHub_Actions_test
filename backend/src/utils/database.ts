@@ -57,13 +57,7 @@ const rollbackMigration = async () => {
 const dropAllTables = async () => {
   logger('Dropping all database tables');
   await sequelize.authenticate();
-  if (process.env.NODE_ENV === 'production') {
-    try {
-      await dropAllTables();
-    } catch (error) {
-      console.log('Error while dropping database tables:' error)
-    }
-  }
+  await sequelize.drop();
 };
 
 const connectToDatabase = async () => {
