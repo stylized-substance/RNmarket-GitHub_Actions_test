@@ -62,6 +62,7 @@ const dropAllTables = async () => {
 
 const connectToDatabase = async () => {
   await sequelize.authenticate();
+  console.log('in production:', process.env.NODE_ENV === 'production')
   if (process.env.NODE_ENV === 'production') {
     await dropAllTables();
   }
