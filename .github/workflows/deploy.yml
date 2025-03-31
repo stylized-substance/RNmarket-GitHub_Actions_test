@@ -47,3 +47,17 @@ jobs:
         run: flyctl deploy --remote-only --ha=false
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+  tag-release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    needs: [lint-and-test, deploy]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: '0'
+      name: Bump version and tag release
+      uses: anothrNick/github-tag-action@1.71.0
+      env:
+        DEFAULT_BUMP: patch
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
