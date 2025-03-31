@@ -8,7 +8,8 @@
   "scripts": {
     "lint": "cd backend && npm run lint && cd ../frontend && npm run lint",
     "testBackend": "cd backend && npm run test-docker",
-    "installDependencies": "cd backend && npm install && cd ../frontend && npm install",
+    "installDependenciesDev": "cd backend && npm install && cd ../frontend && npm install",
+    "installDependenciesProd": "cd backend && npm ci --only=production  && cd ../frontend && npm ci --only=production",
     "build": "cd frontend && npm run build && cd ../backend && npm run build",
     "start": "NODE_ENV=production node index.js"
   },
