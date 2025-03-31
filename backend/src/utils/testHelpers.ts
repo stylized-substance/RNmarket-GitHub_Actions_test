@@ -86,12 +86,7 @@ export const assertValidType = (
 export const getToken = async (user: {
   username: string;
   password: string;
-}): Promise<string | undefined> => {
-  try {
-    const loginResponse = await api.post('/api/authorization/login').send(user);
-    return loginResponse.body.payload.accessToken;
-  } catch (error) {
-    console.log('Error while getting access token', error)
-    return undefined
-  }
+}): Promise<string> => {
+  const loginResponse = await api.post('/api/authorization/login').send(user);
+  return loginResponse.body.payload.accessToken;
 };
