@@ -61,7 +61,7 @@ const dropAllTables = async () => {
     try {
       await dropAllTables();
     } catch (error) {
-      console.log('Error while dropping database tables:' error)
+      console.log('Error while dropping database tables:', error)
     }
   }
 };
