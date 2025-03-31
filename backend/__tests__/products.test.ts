@@ -17,8 +17,8 @@ import { Product as ProductModel, Review } from '#src/models';
 const api = supertest(app);
 
 // Declare variables for access tokens
-let userAccessToken: string;
-let adminAccessToken: string;
+let userAccessToken: string | undefined;
+let adminAccessToken: string | undefined;
 
 beforeAll(async () => {
   // Empty database and run migrations
