@@ -40,7 +40,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: superfly/flyctl-actions/setup-flyctl@master
       - name: Install dependencies
-        run: npm run installDependenciesProd
+        run: npm run installDependenciesDev
       - name: Build app
         run: npm run build
       - name: Deploy
